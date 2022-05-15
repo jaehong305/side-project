@@ -1,0 +1,16 @@
+{
+  "workbench.startupEditor": "none",
+  "explorer.confirmDelete": false,
+  "editor.tabSize": 2,
+  "files.autoSave": "onFocusChange",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "workbench.colorTheme": "Dracula Soft",
+  "workbench.iconTheme": "material-icon-theme",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "explorer.confirmDragAndDrop": false,
+  "editor.guides.bracketPairs": "active",
+  "bracketPairColorizer.depreciation-notice": false,
+  "editor.minimap.enabled": false,
+  "liveServer.settings.port": 5501
+}
