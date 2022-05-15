@@ -4,7 +4,7 @@ import { CreateUserSocialDto } from './dto/create-user-social.dto';
 import { Request } from 'express';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { AuthGuard } from '@nestjs/passport';
-import { CreateUserDto } from './dto/create-user.dto copy';
+import { CreateUserDto } from './dto/create-user.dto';
 
 @Controller('user')
 export class UserController {

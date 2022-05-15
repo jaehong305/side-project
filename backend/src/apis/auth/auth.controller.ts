@@ -14,15 +14,6 @@ export interface IOAuthUser {
 export class AuthController {
   constructor(private readonly authService: AuthService, private readonly userService: UserService) {}
 
-  @Get('/login/google')
-  @UseGuards(AuthGuard('google'))
-  async loginGoogle(
-    @Req() req: Request & IOAuthUser, //
-    @Res() res: Response,
-  ) {
-    await this.authService.OAuthLogin(req, res);
-  }
-
   @Post('/login')
   async login(@Body('email') email: string, @Body('password') password: string, @Res() res: Response) {
     const user = await this.userService.findOne({ email });
@@ -32,8 +23,16 @@ export class AuthController {
 
     this.authService.setRefreshToken({ user, res });
     const accessToken = this.authService.getAccessToken({ user });
-    console.log(accessToken);
     res.send({ accessToken });
+  }
+
+  @Get('/login/google')
+  @UseGuards(AuthGuard('google'))
+  async loginGoogle(
+    @Req() req: Request & IOAuthUser, //
+    @Res() res: Response,
+  ) {
+    await this.authService.OAuthLogin(req, res);
   }
 
   @Post('/restore/accessToken')

@@ -36,7 +36,6 @@ export class AuthService {
 
       res.setHeader('Set-Cookie', `email=${req.user.email}; path=/;`);
       res.redirect('http://localhost:5501/frontend/signupSocial.html');
-
       return;
     }
 
