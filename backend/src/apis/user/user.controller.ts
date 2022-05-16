@@ -11,12 +11,12 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post()
-  async create(@Body('createUserDto') createUserDto: CreateUserDto) {
+  async create(@Body() createUserDto: CreateUserDto) {
     return await this.userService.create({ createUserDto });
   }
 
   @Post('/social')
-  async createSocial(@Req() req: Request, @Body('createUserSocialDto') createUserSocialDto: CreateUserSocialDto) {
+  async createSocial(@Req() req: Request, @Body() createUserSocialDto: CreateUserSocialDto) {
     const email = req.headers.cookie
       .split('; ')
       .filter(e => e.includes('email='))[0]
@@ -26,7 +26,7 @@ export class UserController {
 
   @Patch()
   @UseGuards(AuthGuard('access'))
-  async update(@Body('updateUserDto') updateUserDto: UpdateUserDto, @Req() req: Request) {
+  async update(@Body() updateUserDto: UpdateUserDto, @Req() req: Request) {
     return await this.userService.update({ updateUserDto, currentUser: req.user });
   }
 }

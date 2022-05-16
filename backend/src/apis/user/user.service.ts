@@ -32,7 +32,6 @@ export class UserService {
   async create({ createUserDto }) {
     const { password, ...rest } = createUserDto;
     const user = await this.findOne({ email: createUserDto.email });
-    console.log('❤️', user);
     if (user) throw new ConflictException('이미 가입된 이메일입니다.');
 
     const hashPassword = await bcrypt.hash(password, 10);
